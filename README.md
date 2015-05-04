@@ -1,8 +1,8 @@
 # UEFI GRUB multi boot example
 A grub.cfg example of multi iso UEFI boot
 **setup your usb**:
-8GB USB drive for example
 --------
+8GB USB drive for example
 - Clean the beginning of USB drive to prevent possible problems:
 ```
 dd if=/dev/zero of=/dev/sdb bs=2M count=2 (make sure your usb device is sdb!)
