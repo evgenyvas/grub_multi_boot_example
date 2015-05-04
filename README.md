@@ -1,6 +1,7 @@
 # UEFI GRUB multi boot example
 A grub.cfg example of multi iso UEFI boot
 **setup your usb**:
+8GB USB drive for example
 --------
 - Clean the beginning of USB drive to prevent possible problems:
 ```
@@ -13,10 +14,10 @@ Create a new disklabel of GPT type using parted: (use extreme caution; parted co
 parted -a optimal /dev/sdb (make sure drive you are working on is sdb)
 mklabel gpt
 unit MB
-mkpart BOOTEFI fat32 0% 256M   (creates the EFI partition which is 200M in size)
+mkpart EFIBOOT fat32 0% 256M   (creates the EFI partition which is 200M in size)
 set 1 boot on
 mkpart bootiso ext4 256M 7.5G  (creates a second partition of 7.5 GB)
-mkpart private ext4 7.6G 100%  (creates a third partition which will take up the rest of the drive)
+mkpart private ext4 7.5G 100%  (creates a third partition which will take up the rest of the drive)
 unit MB  
 print
 print free
