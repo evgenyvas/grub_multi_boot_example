@@ -1,6 +1,14 @@
 # UEFI GRUB multi boot example
 A grub.cfg example of multi iso UEFI boot
-**setup your usb**:
+
+This guide is based on a host using a recent version of Ubuntu (or similar). No other prerequisites are required.
+Users attempting to create a multiboot USB from CentOS 7 (or similar) will need to install some prerequisite packages on their host.
+```
+# CentOS 7 ONLY:
+yum install dosfstools grub2-efi-modules
+```
+
+**Setup your USB**:
 --------
 8GB USB drive for example
 - Clean the beginning of USB drive to prevent possible problems:
@@ -46,7 +54,11 @@ mount /dev/sdb1 /target/boot/efi
 ```
 - Now install grub2:
 ```
+# UBUNTU Users:
 grub-install --removable --target=x86_64-efi --efi-directory=/target/boot/efi --boot-directory=/target/boot --bootloader-id=grub --recheck /dev/sdb
+
+# CentOS 7 Users:
+grub2-install --removable --target=x86_64-efi --efi-directory=/target/boot/efi --boot-directory=/target/boot --bootloader-id=grub --recheck /dev/sdb
 ```
 - For the third partition (sdb3) I use the fat system because it can be used with Windows machines as well as Linux and Macintosh boxes:
 ```
